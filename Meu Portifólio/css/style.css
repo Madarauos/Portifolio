@@ -237,3 +237,11 @@ footer{
 
 }
 
+footer:hover{
+
+    border-top: 3px solid azure;
+    transform: scale(0.98);
+    transition: 1s;
+
+}
+
