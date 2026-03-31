@@ -52,22 +52,22 @@ const todosProjetos = [
     badge: "Projeto técnico",
     year: "2024",
     accent: "#22c55e",
-    image: null,
+    image: '/pd.avf',
     live: "#",
     github: "https://github.com/Madarauos/JOGO_DE_DAMAS",
   },
   {
     id: "05",
-    title: "Sistema de Gerenciamento de Vendas",
-    desc: "Sistema web desenvolvido em equipe durante o curso técnico em Desenvolvimento de Sistemas, com arquitetura MVC, operações CRUD completas e gestão do projeto via metodologia Scrum.",
-    tags: ["PHP", "CSS", "MySQL", "MVC"],
+    title: "Agro Plants Now",
+    desc: "Sistema de gerenciamento de vendas desenvolvido em equipe no curso técnico, com controle de pedidos, comissão de vendedores, gestão de clientes, cupons de desconto e relatórios administrativos. Arquitetura MVC em PHP com metodologia Scrum.",
+    tags: ["PHP", "CSS", "MySQL", "MVC", "PHPMailer", "reCaptcha"],
     filters: ["Web App", "Acadêmico"],
     badge: "Projeto acadêmico",
     year: "2024",
     accent: "#f97316",
     image: null,
     live: "#",
-    github: "#",
+    github: "https://github.com/Madarauos/agro_plants_NOW",
   },
 ];
 
@@ -145,22 +145,47 @@ export default function ProjetosPage() {
                   background: `radial-gradient(circle, ${p.accent}10 0%, transparent 70%)`,
                   pointerEvents: 'none',
                 }} />
-
-                {/* Header: badge de categoria + ano */}
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
-                  <div style={{
-                    padding: "4px 12px",
+                
+                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 20 }}>
+                {p.filters.map(f => (
+                    <span key={f} style={{
+                    padding: "6px 15px",
                     background: `${p.accent}15`,
                     border: `1px solid ${p.accent}30`,
                     borderRadius: "100px",
-                    fontSize: "0.62rem",
+                    fontSize: "0.6rem",
                     color: p.accent,
                     fontFamily: "'DM Mono', monospace",
                     letterSpacing: "0.08em",
-                  }}>
-                    {p.filters[0]}
-                  </div>
-                  <span style={{ fontSize: "0.65rem", color: "#333", fontFamily: "'DM Mono', monospace" }}>{p.year}</span>
+                    }}>{f}</span>
+                ))}
+                </div>
+
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+                {p.badge === 'Em uso real' ? (
+                    <span style={{
+                    fontSize: '0.6rem', color: '#ae00ff',
+                    border: '1px solid #ae00ff33', padding: '3px 10px',
+                    borderRadius: '999px', fontFamily: "'DM Mono', monospace",
+                    display: 'flex', alignItems: 'center', gap: 6,
+                    }}>
+                    {p.badge}
+                    <div style={{ width: 4, height: 4, background: '#ae00ff', borderRadius: '50%', animation: 'blink 1s step-end infinite' }} />
+                    </span>
+                ) : p.badge === 'Projeto acadêmico' ? (
+                    <span style={{
+                    fontSize: '0.6rem', color: '#f97316',
+                    border: '1px solid #f9731640', padding: '3px 10px',
+                    borderRadius: '999px', fontFamily: "'DM Mono', monospace",
+                    }}>{p.badge}</span>
+                ) : (
+                    <span style={{
+                    fontSize: '0.6rem', color: '#22c55e',
+                    border: '1px solid #22c55e40', padding: '3px 10px',
+                    borderRadius: '999px', fontFamily: "'DM Mono', monospace",
+                    }}>{p.badge}</span>
+                )}
+                <span style={{ fontSize: "0.65rem", color: "#333", fontFamily: "'DM Mono', monospace" }}>{p.year}</span>
                 </div>
 
                 {p.image && (

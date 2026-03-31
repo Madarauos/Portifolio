@@ -1,0 +1,239 @@
+"use client";
+import { useState } from "react";
+import { Send, Mail, MapPin, Clock, Github, Linkedin } from "lucide-react";
+import emailjs from "@emailjs/browser";
+
+const EMAILJS_SERVICE_ID  = "service_w34pq3s"; 
+const EMAILJS_TEMPLATE_ID = "template_16kttp8"; 
+const EMAILJS_PUBLIC_KEY  = "oH_VFPhNaQd_nBbBk";
+
+export default function ContactPage() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name:  form.name,
+          from_email: form.email,
+          message:    form.message,
+          to_email:   "paulootaviogalala@gmail.com",
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
+  };
+
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    background: "#111",
+    border: "1px solid rgba(255,255,255,0.08)",
+    borderRadius: "6px",
+    padding: "14px 16px",
+    color: "azure",
+    fontFamily: "'DM Mono', monospace",
+    fontSize: "0.85rem",
+    outline: "none",
+    transition: "border-color 0.2s ease",
+  };
+
+  return (
+    <div style={{ paddingTop: "64px", minHeight: "100vh" }}>
+      {/* Header */}
+      <section style={{ padding: "80px 48px 64px", borderBottom: "1px solid rgba(174,0,255,0.3)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <span style={{ fontSize: "0.65rem", color: "#6b6b6b", textTransform: "uppercase", letterSpacing: "0.2em" }}>— contato</span>
+          <h1 style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 800,
+            fontSize: "clamp(2.5rem, 6vw, 5rem)",
+            color: "azure",
+            marginTop: 8,
+            letterSpacing: "-0.04em",
+            lineHeight: 0.95,
+          }}>
+            Vamos criar algo<br />
+            <span style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "#ae00ff" }}>incrível juntos</span>
+          </h1>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section style={{ padding: "80px 48px 120px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 80, alignItems: "start" }}>
+
+          {/* Info */}
+          <div>
+            <p style={{ fontSize: "0.88rem", color: "#6b6b6b", lineHeight: 1.75, marginBottom: 48 }}>
+              Estou aberto para projetos freelance, colaborações e oportunidades full-time. Me conta sobre seu projeto!
+            </p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 24, marginBottom: 48 }}>
+              {[
+                { icon: Mail,   label: "e-mail",      value: "paulootaviogalala@gmail.com" },
+                { icon: MapPin, label: "localização",  value: "Campo Grande, MS — Brasil"  },
+                { icon: Clock,  label: "respondo em",  value: "até 24 horas"               },
+              ].map(({ icon: Icon, label, value }) => (
+                <div key={label} style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                  <div style={{
+                    width: 40, height: 40,
+                    background: "rgba(174,0,255,0.08)",
+                    border: "1px solid rgba(174,0,255,0.2)",
+                    borderRadius: "8px",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    flexShrink: 0,
+                  }}>
+                    <Icon size={16} color="#ae00ff" />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "0.62rem", color: "#6b6b6b", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 2 }}>{label}</div>
+                    <div style={{ fontSize: "0.85rem", color: "azure" }}>{value}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <p style={{ fontSize: "0.65rem", color: "#6b6b6b", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>redes sociais</p>
+              <div style={{ display: "flex", gap: 12 }}>
+                {[
+                  { icon: Github,   href: "https://github.com/Madarauos", label: "GitHub"   },
+                  { icon: Linkedin, href: "#",                             label: "LinkedIn" },
+                ].map(({ icon: Icon, href, label }) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                    style={{
+                      width: 42, height: 42,
+                      background: "#111",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      borderRadius: "8px",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      color: "#6b6b6b",
+                      transition: "all 0.2s ease",
+                      textDecoration: "none",
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = "#ae00ff"; e.currentTarget.style.color = "#ae00ff"; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; e.currentTarget.style.color = "#6b6b6b"; }}
+                  >
+                    <Icon size={16} />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Form */}
+          <div style={{
+            background: "#111",
+            border: "1px solid rgba(255,255,255,0.06)",
+            borderRadius: "12px",
+            padding: "48px",
+          }}>
+            {status === "sent" ? (
+              <div style={{ textAlign: "center", padding: "60px 0" }}>
+                <div style={{ fontSize: "3rem", marginBottom: 16 }}>✅</div>
+                <h3 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "1.5rem", color: "#ae00ff", marginBottom: 8 }}>
+                  Mensagem enviada!
+                </h3>
+                <p style={{ color: "#6b6b6b", fontSize: "0.85rem" }}>Responderei em breve. Obrigado pelo contato!</p>
+              </div>
+            ) : status === "error" ? (
+              <div style={{ textAlign: "center", padding: "60px 0" }}>
+                <div style={{ fontSize: "3rem", marginBottom: 16 }}>❌</div>
+                <h3 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "1.5rem", color: "#ff4444", marginBottom: 8 }}>
+                  Erro ao enviar
+                </h3>
+                <p style={{ color: "#6b6b6b", fontSize: "0.85rem" }}>Tente novamente ou me contate diretamente pelo e-mail.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                  <div>
+                    <label style={{ fontSize: "0.65rem", color: "#6b6b6b", textTransform: "uppercase", letterSpacing: "0.1em", display: "block", marginBottom: 8 }}>
+                      nome *
+                    </label>
+                    <input
+                      type="text" required
+                      value={form.name}
+                      onChange={e => setForm({ ...form, name: e.target.value })}
+                      placeholder="Seu nome"
+                      style={inputStyle}
+                      onFocus={e => (e.currentTarget.style.borderColor = "rgba(174,0,255,0.4)")}
+                      onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+                    />
+                  </div>
+                  <div>
+                    <label style={{ fontSize: "0.65rem", color: "#6b6b6b", textTransform: "uppercase", letterSpacing: "0.1em", display: "block", marginBottom: 8 }}>
+                      e-mail *
+                    </label>
+                    <input
+                      type="email" required
+                      value={form.email}
+                      onChange={e => setForm({ ...form, email: e.target.value })}
+                      placeholder="seu@email.com"
+                      style={inputStyle}
+                      onFocus={e => (e.currentTarget.style.borderColor = "rgba(174,0,255,0.4)")}
+                      onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{ fontSize: "0.65rem", color: "#6b6b6b", textTransform: "uppercase", letterSpacing: "0.1em", display: "block", marginBottom: 8 }}>
+                    mensagem *
+                  </label>
+                  <textarea
+                    required
+                    rows={5}
+                    value={form.message}
+                    onChange={e => setForm({ ...form, message: e.target.value })}
+                    placeholder="Conte mais sobre seu projeto, prazo e orçamento..."
+                    style={{ ...inputStyle, resize: "vertical", lineHeight: 1.6 }}
+                    onFocus={e => (e.currentTarget.style.borderColor = "rgba(174,0,255,0.4)")}
+                    onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  style={{
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+                    padding: "16px",
+                    background: status === "sending" ? "#6b00aa" : "#ae00ff",
+                    color: "azure",
+                    border: "none", borderRadius: "6px",
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: "0.8rem", fontWeight: 500,
+                    letterSpacing: "0.1em", textTransform: "uppercase",
+                    cursor: status === "sending" ? "not-allowed" : "pointer",
+                    transition: "all 0.2s ease",
+                    opacity: status === "sending" ? 0.7 : 1,
+                  }}
+                  onMouseEnter={e => { if (status !== "sending") { e.currentTarget.style.boxShadow = "0 10px 40px rgba(174,0,255,0.3)"; e.currentTarget.style.transform = "translateY(-2px)"; }}}
+                  onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "translateY(0)"; }}
+                >
+                  <Send size={14} />
+                  {status === "sending" ? "enviando..." : "enviar mensagem"}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
