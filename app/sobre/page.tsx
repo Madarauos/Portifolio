@@ -60,7 +60,7 @@ export default function AboutPage() {
   return (
     <div style={{ paddingTop: "64px", minHeight: "100vh" }}>
 
-      <section style={{
+      <section className="grid-bg" style={{
         padding: "80px 48px",
         display: "grid", gridTemplateColumns: "1fr 1fr",
         gap: 80, maxWidth: 1100, margin: "0 auto", alignItems: "start",

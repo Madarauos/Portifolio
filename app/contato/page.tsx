@@ -42,7 +42,7 @@ export default function ContactPage() {
   return (
     <div style={{ paddingTop: "64px", minHeight: "100vh" }}>
 
-      <section style={{ padding: "80px 48px 64px", borderBottom: "1px solid rgba(174,0,255,0.3)" }}>
+      <section className="grid-bg" style={{ padding: "80px 48px 64px", borderBottom: "1px solid rgba(174,0,255,0.3)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <span style={{ fontSize: "0.65rem", color: "#6b6b6b", textTransform: "uppercase", letterSpacing: "0.2em" }}>— contato</span>
           <h1 style={{
