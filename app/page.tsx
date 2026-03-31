@@ -174,7 +174,7 @@ export default function Home() {
             <div className="quick-resume-cards" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
               {[
                 { label: "Stack principal", value: "Next.js · React · TypeScript · PostgreSQL" },
-                { label: "Formação", value: "T.I — UFMS · Técnico SENAC-MS (2024–2026)" },
+                { label: "Formação", value: "T.I — UFMS - (Graduando) · Técnico SENAC-MS (2024–2026)" },
                 { label: "Sistemas em produção", value: "3+ aplicações usadas por organizações reais" },
                 { label: "Disponibilidade", value: "CLT · Freelance · Remoto/Híbrido · Turno tarde" },
                 { label: "Localização", value: "Campo Grande, MS — aberto a remoto" },
