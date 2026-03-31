@@ -1,259 +1,264 @@
 "use client";
-import { Download, ArrowRight, Github, Linkedin, MapPin, Briefcase, Clock } from "lucide-react";
+
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, MapPin, Clock, Briefcase, GraduationCap, Code2, Users } from "lucide-react";
 
 const skills = [
-  { name: "React / Next.js",          level: 90 },
-  { name: "TypeScript / JavaScript",  level: 88 },
-  { name: "TailwindCSS / CSS",        level: 85 },
-  { name: "PHP / MySQL",              level: 82 },
-  { name: "PostgreSQL / Supabase",    level: 80 },
-  { name: "Python",                   level: 78 },
+  { category: "Front-end", items: ["React", "Next.js", "TypeScript", "TailwindCSS", "HTML/CSS"] },
+  { category: "Back-end", items: ["Node.js", "PHP", "Python", "REST APIs", "Prisma"] },
+  { category: "Banco de Dados", items: ["PostgreSQL", "MySQL", "Supabase", "NeonDB"] },
+  { category: "Ferramentas", items: ["Git", "GitHub", "VS Code", "Figma", "Vercel"] },
 ];
 
 const timeline = [
   {
     year: "2026",
-    role: "Sistema de Presença Institucional",
-    place: "Projeto real · Em produção",
-    desc: "Sistema com scanner de código de barras para controle de presença, utilizado por instituição real.",
-    highlight: true,
+    title: "Sistemas em Produção",
+    description: "3+ aplicações web sendo usadas por organizações reais em Campo Grande, MS.",
+    type: "work",
   },
   {
     year: "2026",
-    role: "Plataforma Instituto Infância",
-    place: "Projeto real · Em produção",
-    desc: "Aplicação social com gerenciamento de usuários e exportação de relatórios para o Google Drive.",
-    highlight: false,
+    title: "Início em TI — UFMS - (Graduando)",
+    description: "Curso superior em Tecnologia da Informação na Universidade Federal de MS.",
+    type: "education",
   },
   {
-    year: "2025",
-    role: "Sistema de Gerenciamento de Vendas",
-    place: "Projeto real · Em produção",
-    desc: "Sistema completo com controle de pedidos, comissão de vendedores, gestão de clientes e relatórios.",
-    highlight: false,
-  },
-  {
-    year: "2026–atual",
-    role: "Bacharelado em Tecnologia da Informação",
-    place: "UFMS — Universidade Federal de Mato Grosso do Sul",
-    desc: "Graduação em andamento com foco em sistemas, algoritmos e fundamentos de engenharia de software.",
-    highlight: false,
+    year: "2024",
+    title: "Agro Plants Now — Projeto Acadêmico",
+    description: "Desenvolvimento de sistema de gestão de vendas para agroindústria, utilizando arquitetura MVC. Atuação em equipe com Scrum, focando em módulos de pedidos e relatórios, incluindo controle de comissões, cupons e relatórios administrativos.",
+    type: "education",
   },
   {
     year: "2024–2026",
-    role: "Técnico em Desenvolvimento de Sistemas",
-    place: "SENAC-MS",
-    desc: "Formação técnica com projetos em PHP MVC, Python e metodologia Scrum.",
-    highlight: false,
+    title: "Técnico em Desenvolvimento de Sistemas",
+    description: "SENAC-MS — Desenvolvimento web, banco de dados e metodologias ágeis.",
+    type: "education",
   },
 ];
 
-const diferenciais = [
-  { icon: "⚡", title: "Sistemas em produção", desc: "3+ aplicações usadas por organizações reais — não apenas portfólio de estudo." },
-  { icon: "🎯", title: "Entrega completa", desc: "Do banco de dados à interface, solo ou em equipe, com foco em valor ao negócio." },
-  { icon: "🛠", title: "Clean code", desc: "Código legível, manutenível e escalável com boas práticas desde a formação." },
-  { icon: "📈", title: "Aprendizado contínuo", desc: "Graduação em T.I na UFMS em paralelo a projetos reais — base sólida e prática." },
-];
-
-export default function AboutPage() {
+export default function SobrePage() {
   return (
     <div style={{ paddingTop: "64px", minHeight: "100vh" }}>
 
-      <section className="grid-bg" style={{
-        padding: "80px 48px",
-        display: "grid", gridTemplateColumns: "1fr 1fr",
-        gap: 80, maxWidth: 1100, margin: "0 auto", alignItems: "start",
-      }}>
-        <div>
-          <span style={{ fontSize: "0.65rem", color: "#6b6b6b", textTransform: "uppercase", letterSpacing: "0.2em" }}>— sobre mim</span>
-          <h1 style={{
-            fontFamily: "'Poppins', sans-serif", fontWeight: 800,
-            fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "azure",
-            marginTop: 8, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 32,
-          }}>
-            Um dev que<br />
-            <span style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "#ae00ff" }}>resolve problemas reais</span>
-          </h1>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            {[
-              "Sou Paulo, desenvolvedor full-stack baseado em Campo Grande — MS. Construo sistemas web usados em produção por organizações reais, do banco de dados à interface.",
-              "Stack principal: Next.js, React, TypeScript e PostgreSQL. Tenho também base sólida em PHP e Python. Graduando em T.I na UFMS, com formação técnica pelo SENAC-MS.",
-              "Trabalho bem solo ou em equipe, com metodologia Scrum e foco em entrega de valor. Disponível para CLT, freelance e remoto.",
-            ].map((text, i) => (
-              <p key={i} style={{ fontSize: "0.88rem", color: "#6b6b6b", lineHeight: 1.75, margin: 0 }}>{text}</p>
-            ))}
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 28, marginBottom: 32 }}>
-            {[
-              { icon: MapPin,    text: "Campo Grande, MS — aberto a remoto" },
-              { icon: Briefcase, text: "CLT · Freelance · Remoto/Híbrido"   },
-              { icon: Clock,     text: "Disponível no turno tarde"           },
-            ].map(({ icon: Icon, text }) => (
-              <div key={text} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <Icon size={13} color="#ae00ff" />
-                <span style={{ fontSize: "0.78rem", color: "#555", fontFamily: "'DM Mono', monospace" }}>{text}</span>
+      {/* ── HERO COM FOTO ───────────────────────────────────────────────── */}
+      <section className="grid-bg" style={{ padding: "clamp(60px, 10vw, 80px) clamp(20px,5vw,48px) clamp(48px, 8vw, 64px)", borderBottom: "1px solid rgba(174,0,255,0.3)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div className="about-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(40px, 6vw, 80px)", alignItems: "center" }}>
+            {/* Texto */}
+            <div>
+              <span style={{ fontSize: "0.65rem", color: "#6b6b6b", textTransform: "uppercase", letterSpacing: "0.2em" }}>— sobre</span>
+              <h1 style={{
+                fontFamily: "'Poppins', sans-serif", fontWeight: 800,
+                fontSize: "clamp(2rem, 6vw, 4rem)", color: "azure",
+                marginTop: 8, letterSpacing: "-0.04em", lineHeight: 0.95,
+              }}>
+                Quem sou <br />
+                <span style={{ fontFamily: "'Instrument Serif', serif", fontStyle: "italic", color: "#ae00ff" }}>eu?</span>
+              </h1>
+              <p style={{ marginTop: 20, fontSize: "clamp(0.8rem, 2vw, 0.95rem)", color: "#6b6b6b", maxWidth: 600, lineHeight: 1.7 }}>
+                Desenvolvedor full-stack focado em criar sistemas web que resolvem problemas reais. 
+                Atualmente com 3+ aplicações em produção, sendo usadas por organizações em Campo Grande, MS.
+              </p>
+            </div>
+            
+            {/* Foto */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div style={{ 
+                position: "relative",
+                width: "clamp(200px, 80%, 320px)",
+                aspectRatio: "3/4",
+              }}>
+                {/* Borda decorativa */}
+                <div style={{
+                  position: "absolute",
+                  inset: -8,
+                  border: "2px solid #ae00ff",
+                  borderRadius: "8px",
+                  transform: "rotate(3deg)",
+                  opacity: 0.5,
+                }} />
+                <div style={{
+                  position: "absolute",
+                  inset: -4,
+                  border: "1px solid rgba(174,0,255,0.3)",
+                  borderRadius: "8px",
+                  transform: "rotate(-2deg)",
+                }} />
+                {/* Imagem */}
+                <div style={{
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "8px",
+                  overflow: "hidden",
+                  background: "linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                }}>
+                  <Image
+                    src="/images/profile.jpg"
+                    alt="Minha foto"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    priority
+                  />
+                  {/* Overlay gradient */}
+                  <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: "linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%)",
+                  }} />
+                </div>
               </div>
-            ))}
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a href="/resume.pdf" style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              padding: "12px 24px", background: "#ae00ff", color: "azure",
-              borderRadius: "4px", fontFamily: "'DM Mono', monospace",
-              fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.08em",
-              textTransform: "uppercase", textDecoration: "none",
-            }}>
-              <Download size={13} /> Currículo PDF
-            </a>
+      {/* ── DISPONIBILIDADE ────────────────────────────────────── */}
+      <section style={{ padding: "clamp(48px, 8vw, 64px) clamp(20px,5vw,48px)", background: "#0d0d0d", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div className="quick-resume-grid" style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "clamp(32px, 6vw, 64px)", alignItems: "center" }}>
+            <div>
+              <span style={{ fontSize: "0.65rem", color: "#ae00ff", textTransform: "uppercase", letterSpacing: "0.2em" }}>— disponibilidade</span>
+              <h2 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "clamp(1.3rem, 3vw, 1.6rem)", color: "azure", marginTop: 8, letterSpacing: "-0.03em", lineHeight: 1.2 }}>
+                Pronto para trabalhar
+              </h2>
+            </div>
+            <div className="quick-resume-cards" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
+              {[
+                { icon: Briefcase, label: "Modalidade", value: "CLT · Freelance · Remoto/Híbrido" },
+                { icon: Clock, label: "Turno", value: "Tarde (flexível)" },
+                { icon: MapPin, label: "Localização", value: "Campo Grande, MS — aberto a remoto" },
+                { icon: GraduationCap, label: "Formação", value: "T.I — UFMS (Graduando)" },
+                { icon: GraduationCap, label: "Formação", value: "Técnico SENAC-MS" },
+              ].map(({ icon: Icon, label, value }, i) => (
+                <div key={i} style={{ padding: "16px 20px", background: "#111", border: "1px solid rgba(255,255,255,0.05)", borderRadius: "6px", display: "flex", gap: 12, alignItems: "flex-start" }}>
+                  <div style={{ width: 32, height: 32, background: "rgba(174,0,255,0.1)", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <Icon size={14} color="#ae00ff" />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "0.6rem", color: "#ae00ff", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 4 }}>{label}</div>
+                    <div style={{ fontSize: "clamp(0.7rem, 1.5vw, 0.78rem)", color: "#ccc", fontFamily: "'DM Mono', monospace", lineHeight: 1.5 }}>{value}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SKILLS & TIMELINE ─────────────────────────────────── */}
+      <section style={{ padding: "clamp(60px, 10vw, 80px) clamp(20px,5vw,48px)" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div className="two-col-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(40px, 6vw, 80px)" }}>
+            
+            {/* Skills */}
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32 }}>
+                <Code2 size={20} color="#ae00ff" />
+                <h2 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "clamp(1.2rem, 3vw, 1.4rem)", color: "azure" }}>
+                  Tecnologias
+                </h2>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                {skills.map((group) => (
+                  <div key={group.category}>
+                    <div style={{ fontSize: "0.6rem", color: "#ae00ff", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 12, fontFamily: "'DM Mono', monospace" }}>
+                      {group.category}
+                    </div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                      {group.items.map((item) => (
+                        <span key={item} style={{
+                          padding: "6px 14px",
+                          background: "#111",
+                          border: "1px solid rgba(255,255,255,0.08)",
+                          borderRadius: "100px",
+                          fontSize: "clamp(0.65rem, 1.5vw, 0.72rem)",
+                          color: "#aaa",
+                          fontFamily: "'DM Mono', monospace",
+                        }}>
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Timeline */}
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32 }}>
+                <Users size={20} color="#ae00ff" />
+                <h2 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "clamp(1.2rem, 3vw, 1.4rem)", color: "azure" }}>
+                  Trajetória
+                </h2>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                {timeline.map((item, i) => (
+                  <div key={i} style={{ display: "flex", gap: 16, position: "relative" }}>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                      <div style={{
+                        width: 12, height: 12,
+                        background: item.type === "work" ? "#ae00ff" : "#333",
+                        borderRadius: "50%",
+                        border: item.type === "work" ? "none" : "2px solid #ae00ff",
+                      }} />
+                      {i < timeline.length - 1 && (
+                        <div style={{ width: 2, flex: 1, background: "rgba(174,0,255,0.2)", marginTop: 8 }} />
+                      )}
+                    </div>
+                    <div style={{ paddingBottom: 24 }}>
+                      <div style={{ fontSize: "0.6rem", color: "#ae00ff", fontFamily: "'DM Mono', monospace", marginBottom: 6 }}>{item.year}</div>
+                      <h3 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1rem", color: "azure", marginBottom: 6 }}>{item.title}</h3>
+                      <p style={{ fontSize: "clamp(0.72rem, 1.5vw, 0.78rem)", color: "#6b6b6b", lineHeight: 1.6 }}>{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ────────────────────────────────────────────────── */}
+      <section className="grid-bg" style={{ padding: "clamp(60px, 10vw, 100px) clamp(20px,5vw,48px)", textAlign: "center", borderTop: "1px solid rgba(174,0,255,0.2)" }}>
+        <div style={{ maxWidth: 700, margin: "0 auto" }}>
+          <span style={{ fontSize: "0.65rem", color: "#ae00ff", textTransform: "uppercase", letterSpacing: "0.2em" }}>— próximo passo</span>
+          <h2 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "clamp(1.6rem, 5vw, 3rem)", color: "azure", marginTop: 12, letterSpacing: "-0.03em", marginBottom: 20 }}>
+            Vamos conversar?
+          </h2>
+          <p style={{ fontSize: "clamp(0.8rem, 2vw, 0.95rem)", color: "#6b6b6b", lineHeight: 1.7, marginBottom: 36 }}>
+            Estou disponível para vagas CLT, projetos freelance ou colaborações técnicas. Respondo em até 24 horas.
+          </p>
+          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/contato" style={{
               display: "inline-flex", alignItems: "center", gap: 8,
-              padding: "12px 24px", background: "transparent", color: "azure",
-              border: "1px solid rgba(255,255,255,0.1)", borderRadius: "4px",
-              fontFamily: "'DM Mono', monospace", fontSize: "0.75rem",
-              letterSpacing: "0.08em", textTransform: "uppercase", textDecoration: "none",
-            }}>
-              falar comigo <ArrowRight size={13} />
+              padding: "16px 32px", background: "#ae00ff", color: "azure",
+              borderRadius: "4px", fontFamily: "'DM Mono', monospace",
+              fontSize: "0.8rem", fontWeight: 500, letterSpacing: "0.08em",
+              textTransform: "uppercase", textDecoration: "none", transition: "all 0.2s ease",
+            }}
+              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 10px 40px rgba(174,0,255,0.4)"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
+            >
+              Entrar em contato <ArrowRight size={14} />
             </Link>
-          </div>
-
-          <div style={{ display: "flex", gap: 16, marginTop: 24 }}>
-            <a href="https://github.com/PauloRojas18" target="_blank" rel="noopener noreferrer" style={{
-              display: "flex", alignItems: "center", gap: 6,
-              color: "#444", fontSize: "0.75rem", textDecoration: "none",
-              fontFamily: "'DM Mono', monospace", transition: "color 0.2s",
+            <Link href="/projetos" style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              padding: "16px 32px", background: "transparent", color: "azure",
+              border: "1px solid rgba(255,255,255,0.1)", borderRadius: "4px",
+              fontFamily: "'DM Mono', monospace", fontSize: "0.8rem",
+              letterSpacing: "0.08em", textTransform: "uppercase",
+              textDecoration: "none", transition: "all 0.2s ease",
             }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#ae00ff")}
-              onMouseLeave={e => (e.currentTarget.style.color = "#444")}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "#ae00ff"; e.currentTarget.style.color = "#e2a4f4"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; e.currentTarget.style.color = "azure"; }}
             >
-              <Github size={14} /> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/paulo-rojas-b7b77a3a1/" style={{
-              display: "flex", alignItems: "center", gap: 6,
-              color: "#444", fontSize: "0.75rem", textDecoration: "none",
-              fontFamily: "'DM Mono', monospace", transition: "color 0.2s",
-            }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#ae00ff")}
-              onMouseLeave={e => (e.currentTarget.style.color = "#444")}
-            >
-              <Linkedin size={14} /> LinkedIn
-            </a>
-          </div>
-        </div>
-
-        <div style={{ position: "relative", display: "flex", justifyContent: "center" }}>
-          <div style={{
-            width: 320, height: 440,
-            background: "linear-gradient(135deg, #1a1a1a 0%, #111 100%)",
-            border: "1px solid rgba(255,255,255,0.08)", borderRadius: "12px",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            position: "relative", overflow: "hidden",
-          }}>
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "60%", background: "radial-gradient(ellipse at bottom, rgba(174,0,255,0.08) 0%, transparent 70%)" }} />
-            <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "6rem", color: "#1e1e1e" }}>PR</span>
-          </div>
-
-          <div style={{ position: "absolute", top: 20, right: -20, background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "10px 16px" }}>
-            <div style={{ fontSize: "0.62rem", color: "#6b6b6b" }}>disponível</div>
-            <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 2 }}>
-              <div style={{ width: 6, height: 6, background: "#ae00ff", borderRadius: "50%", animation: "blink 1.5s step-end infinite" }} />
-              <span style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "0.8rem", color: "azure" }}>para projetos</span>
-            </div>
-          </div>
-
-          <div style={{ position: "absolute", bottom: 30, left: -20, background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.08)", borderRadius: "8px", padding: "10px 16px" }}>
-            <div style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "1.5rem", color: "#ae00ff" }}>3+</div>
-            <div style={{ fontSize: "0.62rem", color: "#6b6b6b" }}>sistemas em produção</div>
-          </div>
-        </div>
-      </section>
-
-      <section style={{ padding: "16px 48px 0", maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-          {[
-            { label: "Graduação", value: "T.I — UFMS (em andamento)" },
-            { label: "Técnico",   value: "Desenvolvimento de Sistemas — SENAC-MS (2024–2026)" },
-            { label: "Idiomas",   value: "Português nativo · Inglês (leitura técnica)" },
-          ].map(({ label, value }) => (
-            <div key={label} style={{
-              padding: "12px 20px", background: "#111",
-              border: "1px solid rgba(255,255,255,0.05)", borderRadius: "6px",
-              display: "flex", gap: 10, alignItems: "center",
-            }}>
-              <span style={{ fontSize: "0.6rem", color: "#ae00ff", textTransform: "uppercase", letterSpacing: "0.1em", fontFamily: "'DM Mono', monospace" }}>{label}</span>
-              <span style={{ fontSize: "0.75rem", color: "#888", fontFamily: "'DM Mono', monospace" }}>{value}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section style={{ padding: "80px 48px", background: "#0d0d0d", borderTop: "1px solid rgba(255,255,255,0.04)", marginTop: 48 }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80 }}>
-
-          <div>
-            <h2 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "1.8rem", color: "azure", marginBottom: 40, letterSpacing: "-0.03em" }}>
-              Habilidades técnicas
-            </h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              {skills.map(s => (
-                <div key={s.name}>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-                    <span style={{ fontSize: "0.8rem", color: "azure" }}>{s.name}</span>
-                    <span style={{ fontSize: "0.7rem", color: "#6b6b6b", fontFamily: "'DM Mono', monospace" }}>{s.level}%</span>
-                  </div>
-                  <div style={{ height: 2, background: "rgba(255,255,255,0.06)", borderRadius: 2 }}>
-                    <div style={{ height: "100%", width: `${s.level}%`, background: "linear-gradient(90deg, #ae00ff, #ad6ef6)", borderRadius: 2, transition: "width 1s ease" }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h2 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "1.8rem", color: "azure", marginBottom: 40, letterSpacing: "-0.03em" }}>
-              Trajetória
-            </h2>
-            <div style={{ position: "relative" }}>
-              <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 1, background: "rgba(255,255,255,0.06)" }} />
-              {timeline.map((t, i) => (
-                <div key={i} style={{ paddingLeft: 28, paddingBottom: 32, position: "relative" }}>
-                  <div style={{
-                    position: "absolute", left: -4, top: 4,
-                    width: 8, height: 8,
-                    background: t.highlight ? "#ae00ff" : "#2a2a2a",
-                    borderRadius: "50%",
-                    border: `1px solid ${t.highlight ? "#ae00ff" : "rgba(255,255,255,0.1)"}`,
-                  }} />
-                  <div style={{ fontSize: "0.63rem", color: "#ae00ff", fontFamily: "'DM Mono', monospace", marginBottom: 4 }}>{t.year}</div>
-                  <div style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "0.95rem", color: "azure" }}>{t.role}</div>
-                  <div style={{ fontSize: "0.7rem", color: "#555", marginTop: 2 }}>{t.place}</div>
-                  <div style={{ fontSize: "0.73rem", color: "#444", marginTop: 5, lineHeight: 1.5 }}>{t.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section style={{ padding: "80px 48px 120px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: "1.8rem", color: "azure", marginBottom: 48, letterSpacing: "-0.03em" }}>
-            Por que me contratar
-          </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 1 }}>
-            {diferenciais.map((v, i) => (
-              <div key={i} style={{ padding: "36px 28px", border: "1px solid rgba(255,255,255,0.05)", transition: "background 0.2s ease" }}
-                onMouseEnter={e => (e.currentTarget.style.background = "#0d0d0d")}
-                onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
-              >
-                <div style={{ fontSize: "2rem", marginBottom: 16 }}>{v.icon}</div>
-                <h3 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, fontSize: "1rem", color: "azure", marginBottom: 8 }}>{v.title}</h3>
-                <p style={{ fontSize: "0.78rem", color: "#6b6b6b", lineHeight: 1.6 }}>{v.desc}</p>
-              </div>
-            ))}
+              Ver projetos
+            </Link>
           </div>
         </div>
       </section>

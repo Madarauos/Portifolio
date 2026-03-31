@@ -4,23 +4,37 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: 'Paulo Rojas — Developer Full-Stack',
-  description: 'Full-stack developer crafting digital experiences'
+  title: 'Paulo Rojas — Desenvolvedor Full-Stack',
+  description: 'Desenvolvedor full-stack construindo sistemas web em produção com Next.js, React, TypeScript e PostgreSQL.',
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
+  },
 };
 
 export default function RootLayout({
-
-  children, 
-}: {children: React.ReactNode;
+  children,
+}: {
+  children: React.ReactNode;
 }) {
-
   return (
-    
-    <html lang="pt-br">
+    <html lang="pt-BR">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
-        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
         <Navbar />
@@ -29,5 +43,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-
 }
