@@ -17,7 +17,7 @@ const projetos = [
     badge: "Produção",
     accent: "#ae00ff",
     image: "/analia-franco/Login_analia.png",
-    github: "https://github.com/Madarauos/analia-franco",
+    github: "https://github.com/PauloRojas18/analia-franco",
     live: null,
   },
   {
@@ -30,7 +30,7 @@ const projetos = [
     badge: "Produção",
     accent: "#35b5ff",
     image: "/mocidade/Dashboard.png",
-    github: "https://github.com/Madarauos/mocidade",
+    github: "https://github.com/PauloRojas18/mocidade",
     live: null,
   },
     {
@@ -43,7 +43,7 @@ const projetos = [
       badge: "Produção",
       accent: "#ad6ef6",
       image: "/infancia/Dashboard.png",
-      github: "https://github.com/Madarauos/instituto-infancia",
+      github: "https://github.com/PauloRojas18/instituto-infancia",
       live: null,
     },
 ];
@@ -150,7 +150,7 @@ export default function Home() {
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
-            <a href="https://github.com/Madarauos" target="_blank" rel="noopener noreferrer" style={{
+            <a href="https://github.com/PauloRojas18" target="_blank" rel="noopener noreferrer" style={{
               display: "flex", alignItems: "center", gap: 6,
               color: "#555", fontSize: "0.75rem", textDecoration: "none",
               fontFamily: "'DM Mono', monospace", transition: "color 0.2s",
@@ -160,7 +160,7 @@ export default function Home() {
             >
               <Github size={14} /> GitHub
             </a>
-            <a href="#" style={{
+            <a href="https://www.linkedin.com/in/paulo-rojas-b7b77a3a1/" style={{
               display: "flex", alignItems: "center", gap: 6,
               color: "#555", fontSize: "0.75rem", textDecoration: "none",
               fontFamily: "'DM Mono', monospace", transition: "color 0.2s",

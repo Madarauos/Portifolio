@@ -28,7 +28,7 @@ export default function Footer(){
 
             <div style={{display: 'flex', gap: '20px'}}>
                 {[
-                    { icon: Github, href:"https://github.com/Madarauos", label: 'Github'},
+                    { icon: Github, href:"https://github.com/PauloRojas18", label: 'Github'},
                     { icon: Linkedin, href:"https://www.linkedin.com/in/paulo-rojas-b7b77a3a1/", label: 'Linkedin'},
                     { icon: InfoJobsIcon, href:"https://www.infojobs.com.br/candidate/cv/detail2.aspx", label: 'Infojobs'},
                     { icon: Mail, href:"mailto:paulootaviogalala@gmail.com?subject=Contato via Portfólio", label: 'Email'},

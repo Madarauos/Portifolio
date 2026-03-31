@@ -121,7 +121,7 @@ export default function AboutPage() {
           </div>
 
           <div style={{ display: "flex", gap: 16, marginTop: 24 }}>
-            <a href="https://github.com/Madarauos" target="_blank" rel="noopener noreferrer" style={{
+            <a href="https://github.com/PauloRojas18" target="_blank" rel="noopener noreferrer" style={{
               display: "flex", alignItems: "center", gap: 6,
               color: "#444", fontSize: "0.75rem", textDecoration: "none",
               fontFamily: "'DM Mono', monospace", transition: "color 0.2s",
@@ -131,7 +131,7 @@ export default function AboutPage() {
             >
               <Github size={14} /> GitHub
             </a>
-            <a href="#" style={{
+            <a href="https://www.linkedin.com/in/paulo-rojas-b7b77a3a1/" style={{
               display: "flex", alignItems: "center", gap: 6,
               color: "#444", fontSize: "0.75rem", textDecoration: "none",
               fontFamily: "'DM Mono', monospace", transition: "color 0.2s",

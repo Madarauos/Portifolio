@@ -17,7 +17,7 @@ const todosProjetos = [
     accent: "#ae00ff",
     image: "/analia-franco/Login_analia.png",
     live: null,
-    github: "https://github.com/Madarauos/analia-franco",
+    github: "https://github.com/PauloRojas18/analia-franco",
   },
   {
     id: "03",
@@ -32,7 +32,7 @@ const todosProjetos = [
     accent: "#35b5ff",
     image: "/mocidade/Dashboard.png",
     live: null,
-    github: "https://github.com/Madarauos/mocidade",
+    github: "https://github.com/PauloRojas18/mocidade",
   },
   {
     id: "02",
@@ -47,7 +47,7 @@ const todosProjetos = [
     accent: "#ad6ef6",
     image: "/infancia/Dashboard.png",
     live: null,
-    github: "https://github.com/Madarauos/instituto-infancia",
+    github: "https://github.com/PauloRojas18/instituto-infancia",
   },
   {
     id: "05",
@@ -62,7 +62,7 @@ const todosProjetos = [
     accent: "#f97316",
     image: null,
     live: null,
-    github: "https://github.com/Madarauos/agro_plants_NOW",
+    github: "https://github.com/PauloRojas18/agro_plants_NOW",
   },
   {
     id: "04",
@@ -77,7 +77,7 @@ const todosProjetos = [
     accent: "#22c55e",
     image: null,
     live: null,
-    github: "https://github.com/Madarauos/JOGO_DE_DAMAS",
+    github: "https://github.com/PauloRojas18/JOGO_DE_DAMAS",
   },
 ];
 

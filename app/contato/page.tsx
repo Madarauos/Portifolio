@@ -99,8 +99,8 @@ export default function ContactPage() {
               <p style={{ fontSize: "0.62rem", color: "#6b6b6b", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>redes sociais</p>
               <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
                 {[
-                  { icon: Github,   href: "https://github.com/Madarauos", label: "GitHub"   },
-                  { icon: Linkedin, href: "#",                             label: "LinkedIn" },
+                  { icon: Github,   href: "https://github.com/PauloRojas18", label: "GitHub"   },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/paulo-rojas-b7b77a3a1/",                             label: "LinkedIn" },
                 ].map(({ icon: Icon, href, label }) => (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer" style={{
                     width: 42, height: 42, background: "#111",
