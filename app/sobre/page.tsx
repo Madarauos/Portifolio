@@ -25,7 +25,7 @@ const timeline = [
     type: "education",
   },
   {
-    year: "2024",
+    year: "2025-2026",
     title: "Agro Plants Now — Projeto Acadêmico",
     description: "Desenvolvimento de sistema de gestão de vendas para agroindústria, utilizando arquitetura MVC. Atuação em equipe com Scrum, focando em módulos de pedidos e relatórios, incluindo controle de comissões, cupons e relatórios administrativos.",
     type: "education",
