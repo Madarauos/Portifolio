@@ -97,7 +97,7 @@ export default function SobrePage() {
                   border: "1px solid rgba(255,255,255,0.1)",
                 }}>
                   <Image
-                    src="/images/profile.jpg"
+                    src="/Paulo.png"
                     alt="Minha foto"
                     fill
                     style={{ objectFit: "cover" }}
