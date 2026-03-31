@@ -1,61 +1,68 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ExternalLink} from "lucide-react";
 
-const techStack = ["Next.js", "React", "HTML", "CSS", "JavaScript", "PHP", "Python", "Figma", "MySQL", "PostgreSQL", "TypeScript",];
+const techStack = ["Next.js", "React", "HTML", "CSS", "JavaScript", "PHP", "Python", "Figma", "MySQL", "PostgreSQL", "TypeScript", "Prisma", "TailwindCSS"];
 
 const projetos = [
   {
     num: "01",
     title: "Sistema de Presença Institucional",
-    desc: "Sistema em produção utilizado por instituição real para controle de presença, gerenciamento de participantes e armazenamento de dados em tempo real.",
-    tags: ["Next.js", "TypeScript", "Supabase"],
-    badge: "Em produção",
+    desc: "Sistema em produção utilizado por instituição real para controle de presença, gerenciamento de participantes e armazenamento de dados em tempo real. Possui funcionalidade de scanner de código de barras para efetuar o registro de presença.",
+    tags: ["Next.js", "React", "TypeScript", "NeonDB","Prisma", "JavaScript", "TailwindCSS"],
+    badge: "Em uso real",
     accent: "#ae00ff",
+    image: '/analia-franco/Login_analia.png',
     href: "https://github.com/Madarauos/analia-franco",
   },
   {
     num: "02",
     title: "Plataforma Instituto Infância",
-    desc: "Aplicação desenvolvida para instituto social com gerenciamento de usuários, organização de registros e suporte a atividades educacionais.",
-    tags: ["Next.js", "TypeScript", "Supabase"],
-    badge: "Em produção",
-    accent: "#7b6ef6",
+    desc: "Aplicação desenvolvida para instituto social com gerenciamento de usuários, organização de registros e suporte a atividades educacionais. Possui funcionalidade de exportação de relatórios para o Google Drive.",
+    tags: ["Next.js", "React", "TypeScript", "Supabase", "JavaScript",],
+    badge: "Em uso real",
+    accent: "#ad6ef6",
+    image: '/infancia/Dashboard.png',
     href: "https://github.com/Madarauos/instituto-infancia",
   },
   {
     num: "03",
     title: "Sistema de Gestão de Mocidade",
-    desc: "Sistema para organização de grupos e controle de presença, permitindo acompanhamento contínuo de participantes em atividades recorrentes.",
-    tags: ["Next.js", "TypeScript", "Supabase"],
-    badge: "Em produção",
-    accent: "#ff6b35",
+    desc: "Sistema para organização de grupos e controle de presença, permitindo acompanhamento contínuo de participantes em atividades recorrentes. Possui funcionalidade de exportação de relatórios para o Google Drive.",
+    tags: ["Next.js", "React", "TypeScript", "Supabase", "JavaScript",],
+    badge: "Em uso real",
+    accent: "#35b5ff",
+    image: '/mocidade/Dashboard.png',
     href: "https://github.com/Madarauos/mocidade",
-  },
-  {
-    num: "04",
-    title: "Jogo de Damas com Interface Gráfica",
-    desc: "Aplicação desktop com interface gráfica desenvolvida em Python, implementando a lógica completa do jogo de damas e interação entre jogadores.",
-    tags: ["Python", "PyQt5"],
-    badge: "Projeto técnico",
-    accent: "#22c55e",
-    href: "https://github.com/Madarauos/JOGO_DE_DAMAS",
   },
 ];
 
 const servicos = [
   {
     title: "Desenvolvimento Full-Stack",
-    desc: "Criação de sistemas completos, do frontend ao backend, com foco em performance, escalabilidade e uso real.",
+    desc: "Desenvolvimento de aplicações web completas com Next.js, React, TypeScript e JavaScript, integrado a bancos de dados PostgreSQL, Supabase ou NeonDB utilizando Prisma como ORM, com implementação completa de operações CRUD.",
   },
   {
-    title: "Sistemas para Instituições",
-    desc: "Desenvolvimento de plataformas para gestão de presença, usuários e atividades, utilizadas por organizações reais.",
+    title: "Autenticação e Controle de Usuários",
+    desc: "Sistemas de login, cadastro, recuperação de senha e gerenciamento de permissões para diferentes níveis de acesso.",
   },
   {
-    title: "APIs & Banco de Dados",
-    desc: "Modelagem de dados, integração com APIs e construção de backends eficientes com armazenamento em tempo real.",
+    title: "APIs e Integrações",
+    desc: "Criação e consumo de APIs REST, integração com serviços externos como Google Drive API para exportação de relatórios e automação de processos.",
+  },
+  {
+    title: "Funcionalidades Específicas",
+    desc: "Implementação de recursos como scanner de código de barras, leitura de QR code, geração de relatórios e exportação de dados.",
+  },
+  {
+    title: "UI Responsiva e Moderna",
+    desc: "Desenvolvimento de interfaces limpas e responsivas com TailwindCSS, garantindo boa experiência em dispositivos móveis e desktop.",
+  },
+  {
+    title: "Metodologias Ágeis",
+    desc: "Experiência com metodologia Scrum, trabalhando com sprints, planejamento, daily meetings e entregas contínuas para garantir qualidade e prazos.",
   },
 ];
 
@@ -91,7 +98,7 @@ export default function Home(){
           <div style={{ display: 'flex', alignItems:'center', gap: 8, marginBottom: 24}}>
             <div style={{ width:8, height: 8, background: '#ae00ff', borderRadius: '50%', animation: 'blink 1s step-end infinite'}}/>
             <span style={{ fontSize: '0.7rem', color: '#6b6b6b', letterSpacing:'0.2em', textTransform: 'uppercase', fontFamily:"DM Mono, monospace"}}>
-                dispoinivel para projetosa
+                dispoinível para projetos
             </span>
           </div>
 
@@ -155,8 +162,215 @@ export default function Home(){
           </div>
         </div>
       </section>
-      
+
+      <div style={{
+        borderTop: "1px solid rgba(255,255,255,0.06)",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        padding: "16px 0",
+        overflow: "hidden",
+        background: "#111",}}>
+        <div className="animate-marquee" style={{
+          display:'flex', gap:48, width: 'max-content'
+        }}>
+          {[...techStack, ...techStack].map((t,i) => (
+            <span key={i} style={{
+              fontFamily: "'Poppins', sans-serif",
+              fontWeight: 700,
+              fontSize: '0.85rem',
+              color: i % 2 === 0 ? 'azure' : '#ae00ff',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              display: 'flex', alignItems: 'center', gap: 40,
+            }}>
+              {t}<span style={{color: '#2a2a2a'}}>●</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <section style={{padding: '120px 48px'}}>
+        <div style={{ maxWidth: 1100, margin: '0 auto'}}>
+          <div style={{ display:'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, flexWrap: 'wrap', gap: 16}}>
+            <div>
+              <span style={{fontSize: '0.65rem', color: '#6b6b6b', textTransform: 'uppercase', letterSpacing: '0.2em' }}>-projetos selecionados</span>
+              <h2 style={{fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: 'clamp(2rem, 5vw, 3.5rem)', color:"azure", marginTop: 8, letterSpacing:'-0.03em'}}>
+                Trabalhos em Destaque
+              </h2>
+            </div>
+            <Link href='/projetos' style={{color:'#ae00ff', textDecoration:'none', fontSize:'0.75rem', letterSpacing:'0.1em', display:'flex', alignItems:'center', gap: 6}} >
+              ver todos <ArrowRight size={12}/>
+            </Link>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
+            {projetos.map((p) => (
+              <Link key={p.num} href={p.href} style={{textDecoration: 'none'}}>
+              <div className="card-hover" style={{
+                background: '#111',
+                border: '1px solid rgba(255,255,255,0.06)',
+                borderRadius: '8px',
+                padding: '32px',
+                height: '100%',
+                cursor: 'pointer',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column', 
+              }}>
+               
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 20 }}>
+                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '0.7rem', color: '#333' }}>{p.num}</span>
+                  {p.badge === 'Em uso real' ? (
+                    <span style={{
+                      fontSize: '0.6rem', color: '#ae00ff',
+                      border: '1px solid #ae00ff33', padding: '3px 10px',
+                      borderRadius: '999px', fontFamily: "'DM Mono', monospace",
+                      display: 'flex', alignItems: 'center', gap: 6,
+                    }}>
+                      {p.badge}
+                      <div style={{ width: 4, height: 4, background: '#ae00ff', borderRadius: '50%', animation: 'blink 1s step-end infinite' }} />
+                    </span>
+                  ) : (
+                    <span style={{
+                      fontSize: '0.6rem', color: '#6a00ff',
+                      border: '1px solid #6a00ff6c', padding: '3px 10px',
+                      borderRadius: '999px', fontFamily: "'DM Mono', monospace"
+                    }}>{p.badge}</span>
+                  )}
+                  <ExternalLink size={14} color="#333" />
+                </div>
+
+                {p.image && (
+                  <div style={{
+                    width: '100%',
+                    height: 140,
+                    borderRadius: '6px',
+                    overflow: 'hidden',
+                    marginBottom: 0,
+                    position: 'relative',
+                  }}>
+                    <Image src={p.image} alt={p.title} fill style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'top',
+                      display: 'block',
+                      maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
+                      WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',}} />
+                    <div style={{
+                      position: 'absolute',
+                      top: 12, left: 12,
+                      width: 35, height: 35,
+                      background: `${p.accent}70`,
+                      border: `1px solid ${p.accent}90`,
+                      borderRadius: '8px',
+                      zIndex: 2,
+                  }} />
+                  </div>
+                )}
+
+                <h3 style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 700, color: 'azure', margin: 0 }}>{p.title}</h3>
+                <p style={{ fontFamily: "'DM Mono', monospace", fontSize: '0.78rem', color: '#6b6b6b', marginTop: 8, lineHeight: 1.6 }}>{p.desc}</p>
+                <div style={{
+                  display:'flex',
+                  flexWrap: 'wrap',
+                  gap: 9,
+                  marginTop: 'auto',
+                  paddingTop: 16,
+                }}>
+                  {p.tags.map(tag => (
+                    <span key={tag} style={{
+                      padding: '3px 10px',
+                      border: '1px solid #585858',
+                      borderRadius: '100px',
+                      fontSize: '0.65rem',
+                      color: '#585858',
+                      fontFamily: "'DM Mono', monospace",
+                    }}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Link>
+            ))}
+            </div>
+        </div>
+      </section>
+
+      <section style={{padding:'80px 48px 120px', background:"#0d0d0d"}}>
+            <div style={{maxWidth: 1100, margin: '0 auto'}}>
+              <span style={{fontSize:'0.65rem', color:'#6b6b6b', textTransform:"uppercase", letterSpacing:"0.2em"}}>-serviços</span>
+              <h2 style={{fontFamily:"'Poppins', sans-serif", fontWeight: 800, fontSize:"clamp(2rem, 5vw, 3rem)", color: "azure", marginTop:8, letterSpacing:"-0.03em", marginBottom:56,}}>
+                O que eu faço
+              </h2>
+              <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(300px, 1fr))', gap:1}}>
+                  {servicos.map((s,i) => (
+                    <div key={i} style={{
+                      padding:'40px 32px',
+                      borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                      borderRight: '1px solid rgba(255, 255, 255, 0.05)',
+                      transition: 'background 0.2s ease',
+                    }}
+                    onMouseEnter={e => {e.currentTarget.style.background = '#141414'}}
+                    onMouseLeave={e => {e.currentTarget.style.background = 'transparent'}}
+                    >
+                      {String(i + 1 ).padStart(2, "0")}
+                      <h3 style={{fontFamily:"'Poppins', sans-serif", fontWeight: 700, fontSize:"1.1rem", color:"azure", marginBottom: 10}}>{s.title}</h3>
+                      <p style={{fontSize:"0.78rem", color:"#6b6b6b", lineHeight: 1.6}}>{s.desc}</p>
+                    </div>
+                  ))}
+              </div>
+            </div>
+      </section>
+
+      <section style={{
+        padding: '120px 48px',
+        textAlign: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+          position: 'absolute', top: "50%", left:'50%',
+          transform: 'translate(-50%, -50%)',
+          width: 600, height: 600,
+          background: 'radial-gradient(circle, rgba(170, 0, 255, 0.04) 0%, transparent 70%)',
+          borderRadius:"50%", pointerEvents:'none',
+        }} />
+          <span style={{fontSize:"0.65rem", color:'#6b6b6b', textTransform:'uppercase', letterSpacing: '0.2em'}}>- Vamos trabalhar juntos</span>
+          <h2 style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight:800,
+            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+            color: 'azure',
+            margin: '16px 0 32px',
+            letterSpacing: '-0.04em',
+            lineHeight: 1,
+          }}>Tem um projeto<br />
+          <span style={{ fontFamily: "'Instrument Serif', serif", fontStyle:'italic', color:'#ae00ff'}}>em mente?</span>
+          </h2>
+          <p style={{color: '#6b6b6b', marginBottom: 40, maxWidth: 400, margin: '0 auto 40px', fontSize: '0.9rem', lineHeight: 1.6}}>
+            Estou aberto para freelance, colaborações e oportunidades full-time.
+          </p>
+
+          <Link href='/contato' style={{
+            display: 'inline-flex',
+            alignItems: 'center', gap: 8,
+            padding: '16px 36px',
+            background: "#ae00ff", color: "#000",
+            borderRadius: '4px', 
+            fontFamily: "'DM Mono', monospace",
+            fontSize: '0.8rem', fontWeight: 500,
+            letterSpacing: "0.1em", textTransform: 'uppercase',
+            textDecoration: 'none',
+            transition: 'all 0.2s ease',
+          }}
+          
+          onMouseEnter={e => {e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 10px 40px rgba(127, 11, 216, 0.3)'; }}
+          onMouseLeave={e => {e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+          >Entrar em contato <ArrowRight size={14}/>
+          </Link>
+      </section>
     </div>
+    
   );
 
 }

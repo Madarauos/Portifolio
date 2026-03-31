@@ -47,7 +47,7 @@ export default function Navbar() {
                     fontSize: "1.1rem",
                     color:"azure",
                     letterSpacing: "-0.02em",
-                }}>PR<span style={{color: '#ae00ff'}}></span>.</span>
+                }}>PR<span style={{color: '#ae00ff'}}>.</span></span>
             </Link>
 
             <nav style={{ display:'flex', gap:'32px', alignItems:'center'}}>
