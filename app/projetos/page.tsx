@@ -41,7 +41,7 @@ const todosProjetos = [
     impact: "Sistema MVC completo com controle de pedidos, comissões, cupons e relatórios administrativos.",
     tags: ["PHP", "CSS", "MySQL", "MVC", "PHPMailer", "reCaptcha"],
     filters: ["Web App", "Acadêmico"], badge: "Projeto acadêmico", year: "2024", accent: "#f97316",
-    image: '/agro_plants_NOW/agro.png', live: 'https://agro-plants-demo.vercel.app/',
+    image: '/agro_plants_now/agro.png', live: 'https://agro-plants-demo.vercel.app/',
     github: "https://github.com/PauloRojas18/agro_plants_NOW",
   },
   {
