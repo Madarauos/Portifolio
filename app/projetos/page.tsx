@@ -11,7 +11,7 @@ const todosProjetos = [
     impact: "Sistema em uso ativo com scanner de código de barras para registro instantâneo.",
     tags: ["Next.js", "React", "TypeScript", "NeonDB", "Prisma", "TailwindCSS"],
     filters: ["SaaS"], badge: "Em uso real", year: "2026", accent: "#ae00ff",
-    image: "/analia-franco/Login_analia.png", live: null,
+    image: "/analia-franco/analia.png", live: 'https://analia-demo.vercel.app/',
     github: "https://github.com/PauloRojas18/analia-franco",
   },
   {
@@ -21,7 +21,7 @@ const todosProjetos = [
     impact: "Controle de presença e exportação de relatórios para Google Drive em uso real.",
     tags: ["Next.js", "React", "TypeScript", "Supabase"],
     filters: ["SaaS"], badge: "Em uso real", year: "2026", accent: "#35b5ff",
-    image: "/mocidade/Dashboard.png", live: null,
+    image: "/mocidade/Dashboard.png", live: 'https://mocidade-demo.vercel.app/',
     github: "https://github.com/PauloRojas18/mocidade",
   },
   {
@@ -31,7 +31,7 @@ const todosProjetos = [
     impact: "Exportação automatizada de relatórios para Google Drive, eliminando processo manual.",
     tags: ["Next.js", "React", "TypeScript", "Supabase"],
     filters: ["SaaS"], badge: "Em uso real", year: "2026", accent: "#ad6ef6",
-    image: "/infancia/Dashboard.png", live: null,
+    image: "/infancia/Dashboard.png", live: 'https://infancia-demo.vercel.app/',
     github: "https://github.com/PauloRojas18/instituto-infancia",
   },
   {
@@ -41,8 +41,18 @@ const todosProjetos = [
     impact: "Sistema MVC completo com controle de pedidos, comissões, cupons e relatórios administrativos.",
     tags: ["PHP", "CSS", "MySQL", "MVC", "PHPMailer", "reCaptcha"],
     filters: ["Web App", "Acadêmico"], badge: "Projeto acadêmico", year: "2024", accent: "#f97316",
-    image: null, live: null,
+    image: '/agro_plants_NOW/agro.png', live: 'https://agro-plants-demo.vercel.app/',
     github: "https://github.com/PauloRojas18/agro_plants_NOW",
+  },
+  {
+    id: "06", title: "Velum — Plataforma de Streaming",
+    problem: "Necessidade de uma plataforma centralizada para organizar e assistir conteúdos.",
+    role: "Desenvolvimento solo do front-end, back-end, autenticação JWT e integração com Supabase e Google Drive.",
+    impact: "Plataforma funcional com catálogo de filmes e séries, player integrado, painel admin e controle de acesso por perfil.",
+    tags: ["Next.js", "TypeScript", "Supabase", "JWT"],
+    filters: ["Web App", "SaaS"], badge: "Projeto pessoal", year: "2026", accent: "#8b5cf6",
+    image: '/velum/velum.png', live: "https://velumzone.vercel.app",
+    github: "https://github.com/PauloRojas18/velum",
   },
   {
     id: "04", title: "Jogo de Damas com Interface Gráfica",
@@ -51,7 +61,7 @@ const todosProjetos = [
     impact: "Implementação completa das regras do jogo com interface jogável entre dois jogadores.",
     tags: ["Python", "PyQt5"],
     filters: ["Lógica & Algoritmos", "Acadêmico"], badge: "Projeto técnico", year: "2024", accent: "#22c55e",
-    image: null, live: null,
+    image: '/python/damas - Copia.jpg', live: null,
     github: "https://github.com/PauloRojas18/JOGO_DE_DAMAS",
   },
 ];
@@ -147,13 +157,44 @@ export default function ProjetosPage() {
                     {p.badge}
                     {p.badge === "Em uso real" && <div style={{ width: 4, height: 4, background: "#ae00ff", borderRadius: "50%", animation: "blink 1s step-end infinite" }} />}
                   </span>
-                  <span style={{ fontSize: "0.65rem", color: "#333", fontFamily: "'DM Mono', monospace" }}>{p.year}</span>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    {p.live && (
+                      <a href={p.live} target="_blank" rel="noopener noreferrer"
+                        style={{ display: "flex", alignItems: "center", gap: 4, fontSize: "0.6rem", color: "#555", fontFamily: "'DM Mono', monospace", textDecoration: "none", letterSpacing: "0.06em" }}
+                        onMouseEnter={e => (e.currentTarget.style.color = "azure")}
+                        onMouseLeave={e => (e.currentTarget.style.color = "#555")}
+                      >
+                        <ExternalLink size={9} /> demo
+                      </a>
+                    )}
+                    <span style={{ fontSize: "0.65rem", color: "#333", fontFamily: "'DM Mono', monospace" }}>{p.year}</span>
+                  </div>
                 </div>
 
                 {p.image && (
                   <div style={{ width: "100%", height: 120, borderRadius: "6px", overflow: "hidden", marginBottom: 16, position: "relative", background: "#0a0a0a" }}>
                     <Image src={p.image} alt={p.title} fill style={{ objectFit: "cover", objectPosition: "top", maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 100%)" }} />
-                    <div style={{ position: "absolute", top: 10, left: 10, width: 28, height: 28, background: `${p.accent}70`, border: `1px solid ${p.accent}90`, borderRadius: "6px", zIndex: 2 }} />
+                    {p.live && (
+                      <a
+                        href={p.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          position: "absolute", top: 10, right: 10, zIndex: 2,
+                          display: "flex", alignItems: "center", gap: 4,
+                          padding: "4px 10px", borderRadius: "100px",
+                          background: "rgba(10,10,10,0.7)", backdropFilter: "blur(8px)",
+                          border: "1px solid rgba(255,255,255,0.12)",
+                          color: "#aaa", fontSize: "0.58rem",
+                          fontFamily: "'DM Mono', monospace", letterSpacing: "0.08em",
+                          textDecoration: "none", transition: "color 0.2s, border-color 0.2s",
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.color = "azure"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)"; }}
+                        onMouseLeave={e => { e.currentTarget.style.color = "#aaa"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)"; }}
+                      >
+                        <ExternalLink size={9} /> demo
+                      </a>
+                    )}
                   </div>
                 )}
 

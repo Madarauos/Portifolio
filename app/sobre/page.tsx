@@ -12,12 +12,7 @@ const skills = [
 ];
 
 const timeline = [
-  {
-    year: "2026",
-    title: "Sistemas em Produção",
-    description: "3+ aplicações web sendo usadas por organizações reais em Campo Grande, MS.",
-    type: "work",
-  },
+
   {
     year: "2026",
     title: "Início em TI — UFMS - (Graduando)",

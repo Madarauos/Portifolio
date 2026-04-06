@@ -16,9 +16,9 @@ const projetos = [
     tags: ["Next.js", "React", "TypeScript", "NeonDB", "Prisma", "TailwindCSS"],
     badge: "Produção",
     accent: "#ae00ff",
-    image: "/analia-franco/Login_analia.png",
+    image: "/analia-franco/analia.png",
     github: "https://github.com/PauloRojas18/analia-franco",
-    live: null,
+    live: 'https://analia-demo.vercel.app/',
   },
   {
     num: "03",
@@ -31,7 +31,7 @@ const projetos = [
     accent: "#35b5ff",
     image: "/mocidade/Dashboard.png",
     github: "https://github.com/PauloRojas18/mocidade",
-    live: null,
+    live: 'https://mocidade-demo.vercel.app/',
   },
   {
     num: "02",
@@ -44,7 +44,7 @@ const projetos = [
     accent: "#ad6ef6",
     image: "/infancia/Dashboard.png",
     github: "https://github.com/PauloRojas18/instituto-infancia",
-    live: null,
+    live: 'https://infancia-demo.vercel.app/',
   },
 ];
 
@@ -242,7 +242,6 @@ export default function Home() {
                 {p.image && (
                   <div style={{ width: "100%", height: 130, borderRadius: "6px", overflow: "hidden", marginBottom: 20, position: "relative", background: "#0a0a0a" }}>
                     <Image src={p.image} alt={p.title} fill style={{ objectFit: "cover", objectPosition: "top", maskImage: "linear-gradient(to bottom, black 40%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 100%)" }} />
-                    <div style={{ position: "absolute", top: 10, left: 10, width: 32, height: 32, background: `${p.accent}70`, border: `1px solid ${p.accent}90`, borderRadius: "6px", zIndex: 2 }} />
                   </div>
                 )}
 
